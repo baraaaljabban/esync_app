@@ -1,15 +1,14 @@
+import 'package:esync_app/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:get_it/get_it.dart';
 
-Future<void> getTillDependencies(GetIt sl) async {
-  //COMMON DEPENDENCIES ARE
+Future<void> authDependencies(GetIt sl) async {
 
-
-  // sl.registerFactory(
-  //       () => TillBloc(
-  //     tillListUseCase: sl(),
-  //     closeTillUseCase: sl(),
-  //   ),
-  // );
+  sl.registerFactory(
+        () => AuthenticationBloc(
+      // tillListUseCase: sl(),
+      // closeTillUseCase: sl(),
+    ),
+  );
 
   // sl.registerFactory(() => TillListUseCase(repository: sl()));
   // sl.registerFactory(() => CloseTillUseCase(repository: sl()));
