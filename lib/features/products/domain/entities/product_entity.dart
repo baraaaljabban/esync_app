@@ -10,4 +10,9 @@ class ProductEntity {
     required this.name,
     required this.imageUrl,
   });
+
+  @override
+  String toString() {
+    return 'ProductEntity(id: $id, price: $price, name: $name, imageUrl: $imageUrl)';
+  }
 }

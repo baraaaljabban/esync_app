@@ -4,11 +4,11 @@ import 'package:esync_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:esync_app/features/products/presentation/bloc/products_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc/src/bloc_provider.dart';
 
 import 'features/authentication/presentation/pages/authentication_page.dart';
 import 'features/home/presentation/pages/home_page.dart';
 import 'features/products/presentation/pages/products_page.dart';
-import 'package:flutter_bloc/src/bloc_provider.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class _AppState extends State<App> {
       child: MaterialApp(
         title: "TEST",
         theme: ThemeData.dark(),
-        home: const HomePage(),
+        home: const ProductsPage(),
       ),
     );
   }

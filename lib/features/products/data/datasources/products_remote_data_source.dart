@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:html';
+import 'dart:developer';
 
 import 'package:esync_app/core/errors/error_handler.dart';
 import 'package:esync_app/core/network/http_client.dart';
@@ -21,7 +21,7 @@ class ProductsRemoteDataSourceImpl extends ProductsRemoteDataSource with ErrorHa
   @override
   Future<List<ProductModel>> loadProducts() async {
     var string = await rootBundle.loadString('assets/products.json');
-    return ProductListModel.fromRawJson(string).products.getRange(0, 5).toList();
+    return ProductListModel.fromJson(jsonDecode(string)).products.getRange(0, 5).toList();
     // var path = "Products_ENDPOINT" + "?&pageSize=20";
     // var result = await client.getData(
     //   url: path,
@@ -38,7 +38,7 @@ class ProductsRemoteDataSourceImpl extends ProductsRemoteDataSource with ErrorHa
   @override
   Future<List<ProductModel>> loadMoreProducts({required int pageNumber}) async {
     var string = await rootBundle.loadString('assets/products.json');
-    return ProductListModel.fromRawJson(string).products.getRange(5, 10).toList();
+    return ProductListModel.fromJson(jsonDecode(string)).products.getRange(5, 10).toList();
 
     // var path = "Products_ENDPOINT" + "?&pageNumber=$pageNumber";
     // var result = await client.getData(

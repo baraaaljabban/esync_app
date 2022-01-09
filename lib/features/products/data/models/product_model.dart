@@ -1,3 +1,5 @@
+// ignore_for_file: overridden_fields, annotate_overrides
+
 import 'dart:convert';
 
 import 'package:esync_app/features/products/domain/entities/product_entity.dart';
@@ -55,7 +57,7 @@ class ProductListModel {
   String toRawJson() => json.encode(toJson());
 
   factory ProductListModel.fromJson(Map<String, dynamic> json) => ProductListModel(
-        products: List<ProductModel>.from(json["items"].map((x) => ProductModel.fromJson(x))),
+        products: List<ProductModel>.from(json["items"].map((x) => ProductModel.fromMap(x))),
       );
 
   Map<String, dynamic> toJson() => {

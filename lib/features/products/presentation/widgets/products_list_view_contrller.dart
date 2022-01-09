@@ -28,7 +28,6 @@ class _ProductListViewControllerState extends State<ProductListViewController> {
 
   @override
   void initState() {
-    BlocProvider.of<ProductsBloc>(context).add(GetProductsEvent());
     _scrollController.addListener(_onScroll);
     super.initState();
   }
@@ -37,7 +36,6 @@ class _ProductListViewControllerState extends State<ProductListViewController> {
   Widget build(BuildContext context) {
     return ListView.builder(
       controller: _scrollController,
-      padding: const EdgeInsets.only(top: 45.0),
       itemCount: widget.products.length,
       itemBuilder: (context, index) {
         // show the loading bar if is a t the bottom
@@ -48,11 +46,15 @@ class _ProductListViewControllerState extends State<ProductListViewController> {
           }
           return const SizedBox(height: 50, child: Center(child: CircularProgressIndicator()));
         }
-        return Column(
-          children: [
-            Text(widget.products[index].name),
-            Text(widget.products[index].price.toString()),
-          ],
+        return Container(
+          width: 300,
+          height: 300,
+          child: Column(
+            children: [
+              Text(widget.products[index].name),
+              Text(widget.products[index].price.toString()),
+            ],
+          ),
         );
       },
     );

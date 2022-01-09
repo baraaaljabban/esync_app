@@ -10,8 +10,6 @@ import 'connection_checker.dart';
 abstract class HttpClient {
   /// hits a post request to [BASE_URL] + [url] with [body] as the as the body of the HTTP request
   ///
-  /// overriding the [isForLogin] changes the format of the url being called
-  ///
   /// **from** [BASE_URL] + [url]
   ///
   /// **To** `"https://"` + [url] + `"/api-backend/Authenticate/GetToken"`
@@ -50,7 +48,7 @@ class HttpClientImpl extends HttpClient {
   }) async {
     await _throwExceptionIfNoConnection();
 
-    var finalUrl = isForLogin ? Uri.parse("https://" + url + "/api-backend/Authenticate/GetToken") : Uri.parse(BASE_URL + url);
+    var finalUrl = Uri.parse(BASE_URL + url);
 
     log("Posting To: $finalUrl");
     var result = await http.post(
