@@ -10,6 +10,8 @@ part 'products_state.dart';
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   final GetMoreProducts moreProductsUsecase;
   final GetProducts getProductsUsecase;
+  List<ProductEntity> products = [];
+
   int pageNumber = 1;
   ProductsBloc({
     required this.moreProductsUsecase,
@@ -27,10 +29,12 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   _onGetProducts(GetProductsEvent event, Emitter<ProductsState> emit) async {
     emit(LoadingProductsState());
     var result = await getProductsUsecase();
+    products.clear();
     result.fold(
         (l) => emit(LoadFailedState()),
         (r) => {
-              emit(ProductsLoadedState(products: r, isReachedMax: false)),
+              products.addAll(r),
+              emit(ProductsLoadedState(products: products, isReachedMax: false)),
             });
   }
 
@@ -42,9 +46,11 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         (l) => emit(LoadFailedState()),
         (r) => {
               pageNumber++,
+              products.addAll(r),
               emit(
                 ProductsLoadedState(
-                  products: r,
+                  products: products,
+                  //this now is hard coded for delivery purpose only 
                   isReachedMax: true,
                 ),
               ),

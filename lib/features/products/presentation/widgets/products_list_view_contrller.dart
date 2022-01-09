@@ -34,7 +34,7 @@ class _ProductListViewControllerState extends State<ProductListViewController> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return GridView.builder(
       controller: _scrollController,
       itemCount: widget.products.length,
       itemBuilder: (context, index) {
@@ -46,17 +46,51 @@ class _ProductListViewControllerState extends State<ProductListViewController> {
           }
           return const SizedBox(height: 50, child: Center(child: CircularProgressIndicator()));
         }
-        return Container(
-          width: 300,
-          height: 300,
-          child: Column(
-            children: [
-              Text(widget.products[index].name),
-              Text(widget.products[index].price.toString()),
-            ],
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            elevation: 3,
+            clipBehavior: Clip.hardEdge,
+            child: Column(
+              children: [
+                Expanded(
+                    flex: 8,
+                    child: Image.network(
+                      widget.products[index].imageUrl,
+                      fit: BoxFit.fill,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                      errorBuilder: (context, error, stackTrace) {
+                        return Column(
+                          children: const [
+                            Icon(
+                              Icons.error,
+                              color: Colors.red,
+                            ),
+                            Text("something went worng")
+                          ],
+                        );
+                      },
+                    )),
+                const Spacer(flex: 1),
+                Expanded(flex: 1, child: Text("Name: ${widget.products[index].name}")),
+                const Spacer(flex: 1),
+                Expanded(flex: 2, child: Text("Price: ${widget.products[index].price}RM ")),
+              ],
+            ),
           ),
         );
       },
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        childAspectRatio: 0.8,
+        crossAxisCount: 2,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
+      ),
     );
   }
 

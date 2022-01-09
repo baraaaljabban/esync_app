@@ -4,79 +4,79 @@
             "id": 0,
             "price": 100,
             "name": "one",
-            "imageUrl": ""
+            "imageUrl": "https://picsum.photos/id/1005/5760/3840"
         },
         {
             "id": 1,
             "price": 110,
             "name": "usb",
-            "imageUrl": ""
+            "imageUrl": "https://picsum.photos/id/0/5616/3744"
         },
         {
             "id": 2,
             "price": 20,
             "name": "laptop",
-            "imageUrl": ""
+            "imageUrl": "https://picsum.photos/id/1000/5626/3635"
         },
         {
             "id": 3,
             "price": 10,
             "name": "HDMI",
-            "imageUrl": ""
+            "imageUrl": "https://www.agilitypr.com/wp-content/uploads/2020/02/technology-1-1.jpg"
         },
         {
             "id": 4,
             "price": 345,
             "name": "Light",
-            "imageUrl": ""
+            "imageUrl": "https://content.shopback.com/my/wp-content/uploads/2015/03/usb-typewriter.jpg"
         },
         {
             "id": 5,
             "price": 450,
             "name": "Sun",
-            "imageUrl": ""
+            "imageUrl": "https://www.gannett-cdn.com/presto/2021/11/26/USAT/c8eb2f88-3a4d-4ebf-9b37-c8e58062182f-techgiftshero.png?width=660&height=372&fit=crop&format=pjpg&auto=webp"
         },
         {
             "id": 6,
             "price": 250,
             "name": "building",
-            "imageUrl": ""
+            "imageUrl": "https://picsum.photos/id/1016/3844/2563"
         },
         {
             "id": 7,
             "price": 125,
             "name": "mobile",
-            "imageUrl": ""
+            "imageUrl": "https://picsum.photos/id/1024/1920/1280"
         },
         {
             "id": 8,
             "price": 1000,
             "name": "screen",
-            "imageUrl": ""
+            "imageUrl": "https://picsum.photos/id/1005/5760/3840"
         },
         {
             "id": 9,
             "price": 555,
             "name": "stand",
-            "imageUrl": ""
+            "imageUrl": "https://picsum.photos/id/1000/5626/3635"
         },
         {
             "id": 10,
             "price": 999,
             "name": "Mic",
-            "imageUrl": ""
+            "imageUrl": "https://picsum.photos/id/1008/5616/3744"
         },
         {
             "id": 11,
             "price": 225,
             "name": "cream",
-            "imageUrl": ""
+            "imageUrl": "https://picsum.photos/id/0/5616/3744"
         },
         {
             "id": 12,
             "price": 125,
             "name": "Dark",
-            "imageUrl": ""
+            "imageUrl": "https://picsum.photos/200/300/?blur=2"
         }
     ]
 }
