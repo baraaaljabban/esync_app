@@ -29,7 +29,7 @@ class _AppState extends State<App> {
       child: MaterialApp(
         title: "TEST",
         theme: ThemeData.dark(),
-        home: const ProductsPage(),
+        home: const HomePage(),
       ),
     );
   }

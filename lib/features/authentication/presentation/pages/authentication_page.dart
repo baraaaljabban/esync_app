@@ -10,6 +10,6 @@ class AuthenticationPage extends StatefulWidget {
 class _AuthenticationPageState extends State<AuthenticationPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Center(child: Text("To Be Implemented \n cannot do more than this in 4h :)"));
   }
 }
