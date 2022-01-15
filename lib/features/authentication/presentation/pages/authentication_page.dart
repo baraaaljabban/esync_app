@@ -31,6 +31,10 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
             SnackBarHelper.showErrorSnackBar(context, message: state.message);
           } else if (state is LoadingAuthenticationState) {
             SnackBarHelper.showLoadingSnackBar(context);
+          } else if (state is UserSignedInAuthenticationState) {
+            SnackBarHelper.showSuccessSnackBar(context, message: "${state.username} logged in successfully");
+          } else {
+            ScaffoldMessenger.of(context).removeCurrentSnackBar();
           }
         },
         builder: (context, state) {

@@ -7,7 +7,7 @@ class ProfileController extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(username),
+      child: Text("Welcome ${username}"),
     );
   }
 }

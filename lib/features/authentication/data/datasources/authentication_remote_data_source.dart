@@ -11,12 +11,12 @@ class AuthenticationRemoteDataSourceImpl extends AuthenticationRemoteDataSource 
   @override
   Future<AuthenticationModel> signIn({required String email, required String password}) async {
     UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-    return AuthenticationModel(usernameModel: userCredential.additionalUserInfo!.username ?? "");
+    return AuthenticationModel(usernameModel: userCredential.user?.email ?? "");
   }
 
   @override
   Future<AuthenticationModel> signUp({required String email, required String password}) async {
     UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-    return AuthenticationModel(usernameModel: userCredential.additionalUserInfo!.username ?? "");
+    return AuthenticationModel(usernameModel: userCredential.user?.email ?? "");
   }
 }

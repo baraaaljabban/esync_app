@@ -16,37 +16,41 @@ class _SignInControllerState extends State<SignInController> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
-          "Sign-in",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 26,
-            fontWeight: FontWeight.bold,
-          ),
+    return Center(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Sign-in",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 40),
+            TextField(
+              decoration: const InputDecoration(filled: true, hintText: "email"),
+              controller: _emailController,
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.emailAddress,
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              decoration: const InputDecoration(filled: true, hintText: "password"),
+              controller: _passwordController,
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.visiblePassword,
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => dispatchLogin(),
+              child: const Text("sgin-in"),
+            ),
+          ],
         ),
-        const SizedBox(height: 40),
-        TextField(
-          decoration: const InputDecoration(filled: true, hintText: "email"),
-          controller: _emailController,
-          textInputAction: TextInputAction.done,
-          keyboardType: TextInputType.emailAddress,
-        ),
-        const SizedBox(height: 20),
-        TextField(
-          decoration: const InputDecoration(filled: true, hintText: "password"),
-          controller: _passwordController,
-          textInputAction: TextInputAction.done,
-          keyboardType: TextInputType.visiblePassword,
-        ),
-        const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () => dispatchLogin(),
-          child: const Text("sgin-in"),
-        ),
-      ],
+      ),
     );
   }
 
