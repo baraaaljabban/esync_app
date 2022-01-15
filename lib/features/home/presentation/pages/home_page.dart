@@ -1,5 +1,4 @@
 import 'package:esync_app/features/authentication/presentation/pages/authentication_page.dart';
-import 'package:esync_app/features/common/main_app_bar.dart';
 import 'package:esync_app/features/products/presentation/pages/products_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   //for delivery purpose only
   // cannot do more than this in 4h
   static const List<Widget> _widgetOptions = <Widget>[
@@ -34,7 +32,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MainAppBar(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -43,7 +40,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.login),
-            label: 'Login',
+            label: 'authentication',
           ),
         ],
         currentIndex: _selectedIndex,

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart';
 
 import 'exceptions.dart';
@@ -85,8 +86,7 @@ mixin ErrorHandler {
     log("_constructLogicException ${response.statusCode}");
     Map<String, dynamic> json = jsonDecode(response.body);
     log(json.toString());
-    return ApiLogicException(
-        errorCode: json['code'], title: json['title'], message: json['message']);
+    return ApiLogicException(errorCode: json['code'], title: json['title'], message: json['message']);
   }
 
   /// Helper functions to map the common thrown exception to the failures accordingly
@@ -101,6 +101,19 @@ mixin ErrorHandler {
   /// - UnhandledServerErrorException => UnhandledServerFailure
   /// - ApiLogicException => UnhandledLogicException. **NOTE** Passing this means logic error is not being handle at business logic side
   Failure mapCommonExceptionToFailure(Exception exception) {
+    if (exception is FirebaseAuthException) {
+      if (exception.code == 'weak-password') {
+        return ServerFailure(message: "The password provided is too weak.");
+      } else if (exception.code == 'email-already-in-use') {
+        return ServerFailure(message: "The account already exists for that email.");
+      } else if (exception.code == 'user-not-found') {
+        return ServerFailure(message: 'No user found for that email.');
+      } else if (exception.code == 'wrong-password') {
+        return ServerFailure(message: 'Wrong password provided for that user.');
+      } else {
+        return ServerFailure(message: exception.message ?? "");
+      }
+    }
     if (exception is FormatException) {
       log("FormatException ${exception.message}");
       return JsonFormatFailure(message: "format_failure");
@@ -118,11 +131,9 @@ mixin ErrorHandler {
 
     if (exception is UnhandledServerErrorException) {
       log("UnhandledServerErrorException ${exception.statusCode}");
-      return UnhandledServerFailure(
-          statusCode: exception.statusCode, message: "unhandled_server_failure");
+      return UnhandledServerFailure(statusCode: exception.statusCode, message: "unhandled_server_failure");
     }
     log("UnhandledFailure ${exception.toString()}");
-    return UnhandledFailure(
-        className: exception.runtimeType.toString(), message: "unhandled_failure");
+    return UnhandledFailure(className: exception.runtimeType.toString(), message: "unhandled_failure");
   }
 }

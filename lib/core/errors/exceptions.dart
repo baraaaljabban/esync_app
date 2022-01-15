@@ -33,10 +33,10 @@ class ApiLogicException implements CustomException {
 ///
 /// [body] raw response return from API
 class ServerErrorException implements CustomException {
-  final int statusCode;
+  int statusCode;
   final String body;
 
-  ServerErrorException({required this.statusCode, required this.body});
+  ServerErrorException({this.statusCode = 0, required this.body});
 
   @override
   String toString() => 'ServerErrorException(statusCode: $statusCode, body: $body)';

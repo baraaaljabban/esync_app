@@ -1,13 +1,10 @@
-import 'package:esync_app/core/localization/app_localization.dart';
-import 'package:flutter/material.dart';
+
 
 mixin ValidationHelper {
-
   /// checks if [text] is a valid email  address
   ///
   /// returns null by default and a localized error message if the [text] is not valid
-  static String? validateEmail(
-      BuildContext context, {
+  bool validateEmail({
     required String? text,
   }) {
     ///follows nopcommerce Standards
@@ -20,22 +17,10 @@ mixin ValidationHelper {
     \d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+|(([a-z]|[\u00
     A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+([a-z]+|\d|-|\.{0,1}|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])?([a-z]|[\
     u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$""");
-    if(text == null || text.isEmpty || !_regExp.hasMatch(text)){
-      return AppLocalizations.of(context)!.translateConcatenated('required_error_message_concat', "valid_email");
-    }
-  }
-
-  /// checks if [text] is a valid signed integer
-  ///
-  /// returns null by default and a localized error message if the [text] is not valid
-  static String? validateSignedInteger(
-      BuildContext context, {
-    required String? text,
-  }) {
-    ///follows nopcommerce Standards
-    final RegExp _regExp = RegExp(r"^\d+\.?\d{0,2}");
-    if(text == null || text.isEmpty || !_regExp.hasMatch(text)){
-      return AppLocalizations.of(context)!.translateConcatenated('only_allowed_concat', "numbers_greater_than_zero");
+    if (text == null || text.isEmpty || !_regExp.hasMatch(text)) {
+      return false;
+    } else {
+      return true;
     }
   }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "582230065734",
+    "project_id": "esync-71711",
+    "storage_bucket": "esync-71711.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582230065734:android:fbdc241be1371a2eaa8047",
+        "android_client_info": {
+          "package_name": "com.baraa.aljabban.esync_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582230065734-v33anon9li4fq6qj4f9kogd71078ms2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqqDdoA62Lvlt1N5HCMjrgeSsREylg_pQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582230065734-v33anon9li4fq6qj4f9kogd71078ms2c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -17,15 +17,4 @@ class GetProducts extends UseCaseNoParams<List<ProductEntity>> {
   }
 }
 
-// class ProductFilterParams {
-//   const ProductFilterParams({
-//     required this.query,
-//     this.billingEmail = false,
-//     this.billingPhone = false,
-//     this.billingLastName = false,
-//     this.ProductNotes = false,
-//   });
 
-//   final bool billingEmail, billingPhone, billingLastName, ProductNotes;
-//   final String query;
-// }

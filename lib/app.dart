@@ -17,6 +17,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  bool dayMode = false;
   @override
   void initState() {
     super.initState();
@@ -27,9 +28,36 @@ class _AppState extends State<App> {
     return MultiBlocProvider(
       providers: providers,
       child: MaterialApp(
-        title: "TEST",
-        theme: ThemeData.dark(),
-        home: const HomePage(),
+        themeMode: dayMode ? ThemeMode.light : ThemeMode.dark,
+        theme: ThemeData(
+          brightness: Brightness.light,
+          fontFamily: 'Georgia',
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          fontFamily: 'Georgia',
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            actions: [
+              IconButton(
+                icon: Icon(dayMode ? Icons.nightlight : Icons.light_mode),
+                onPressed: () {
+                  setState(() {
+                    dayMode = !dayMode;
+                  });
+                },
+              ),
+            ],
+            title: const Center(child: Text("ESYNC")),
+          ),
+          body: Builder(
+            builder: (builtContext) {
+              return const HomePage();
+            },
+          ),
+        ),
       ),
     );
   }
